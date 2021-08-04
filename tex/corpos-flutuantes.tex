@@ -91,7 +91,7 @@ A classe \textit{icmc} traz algum comando que auxiliam na inserção da legenda,
 
 A inserção de tabelas e quadros é feita de forma semelhante a inserção de figuras, porém são utilizados os ambientes \textit{table} e \textit{quadro}. A principal diferença entre tabelas e quadros, de acordo com \citeonline{NBR14724:2011}, é que as tabelas são destinadas para informações numéricas e os quadros são mais adequados para informações textuais. Em geral, as tabelas devem estar padronizadas conforme o padrão do \citeonline{ibge1993} requerido pelas normas da ABNT para documentos técnicos e acadêmicos.
 
-Como exemplos foram inseridas a \autoref{tab:lista_produtos} que exibe uma de lista de produtos (construída em \LaTeX) e a Tabela \autoref{tabela:populacao_america_sul} que mostra a população dos países da América do Sul (construída segundo o padrão do IBGE). Foi inserido também o \autoref{quadro:editores_texto_livres} com alguns editores que podem ser usados para se trabalhar com \LaTeX para demonstrar a inserção de quadros.
+Como exemplos foram inseridas a \autoref{tab:lista_produtos} que exibe uma de lista de produtos (construída em \LaTeX) e a Tabela \autoref{tabela:populacao_america_sul} que mostra a população dos países da América do Sul (construída segundo o padrão do IBGE), como exemplo de tabela longa e que ocupa muitas páginas foi inserida a \autoref{tab:longTable}. Foi inserido também o \autoref{quadro:editores_texto_livres} com alguns editores que podem ser usados para se trabalhar com \LaTeX para demonstrar a inserção de quadros, e foi inserida \autoref{quadro:longquadro} para exemplificar quadros que ocupam mais de uma página.
 
  A lista de tabelas também é um elemento opcional que pode ser incluída com o comando \comando{incluidelistatabelas} antes do início do documento. O mesmo acontece com a lista de quadros que pode ser incluída com o comando \comando{incluidelistaquadros}.
 
@@ -107,6 +107,7 @@ Açucar       & Kg      & 3,00        & 100        & 300,00      \\ \hline
 \end{tabularx}
 \fdadospesquisa
 \end{table}
+
 
 \begin{table}[htb]
 \IBGEtab{%
@@ -135,6 +136,49 @@ Código  & País            & População   \\ \midrule \midrule
   }
 \end{table}
 
+
+
+
+\begingroup
+\footnotesize
+\setlength\tabcolsep{3pt}
+\setcellgapes{3pt}
+\makegapedcells
+\begin{xltabular}{\linewidth}{L|L|L|L|L}
+    \caption{Isto é uma tabela longa.} \label{tab:longTable} \\   
+    \Xhline{1pt}
+\multicolumn{5}{|c|}{Início da tabela longa}\\
+    \hline
+\textbf{Chave} & \textbf{Nome}   & \textbf{Tarefa/Banda} & \textbf{Análise} & \textbf{Contexto}\\
+    \Xhline{0.5pt}
+\endfirsthead
+    \caption[]{Continuação }    \\
+    \Xhline{1pt}
+\textbf{Chave} & \textbf{Nome}   & \textbf{Tarefa/Banda} & \textbf{Análise} & \textbf{Contexto}\\
+    \hline
+\endhead
+    \Xhline{1pt}
+\endfoot
+     \hline
+     \multicolumn{5}{|c|}{Final da tabela longa}\\
+     \Xhline{1pt}
+\endlastfoot
+%%%% table body
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\end{xltabular}
+\fdadospesquisa
+\endgroup
+
+
 \begin{quadro}[htb]
 \caption{Editores de Texto Livres}
 \label{quadro:editores_texto_livres}
@@ -147,6 +191,46 @@ Kile       & Sim             & Sim                   \\
 Geany      & Sim             & Não                   \\ \hline
 \end{tabular}
 \end{quadro}
+
+
+\begingroup
+\footnotesize
+\setlength\tabcolsep{3pt}
+\setcellgapes{3pt}
+\makegapedcells
+\begin{longquadro}{\linewidth}{|*{5}{L|}}
+    \caption{Quadro longo} \label{quadro:longquadro} \\   
+    \Xhline{1pt}
+\multicolumn{5}{|c|}{Início do quadro longo}\\
+    \hline
+\textbf{Chave} & \textbf{Nome}   & \textbf{Tarefa/Banda} & \textbf{Análise} & \textbf{Contexto}\\
+    \Xhline{0.5pt}
+\endfirsthead
+    \caption[]{Continuação do quadro}    \\
+    \Xhline{1pt}
+\textbf{Chave} & \textbf{Nome}   & \textbf{Tarefa/Banda} & \textbf{Análise} & \textbf{Contexto}\\
+    \hline
+\endhead
+    \Xhline{1pt}
+\endfoot
+     \hline
+     \multicolumn{5}{|c|}{Final do quadro longo}\\
+     \Xhline{1pt}
+\endlastfoot
+%%%% table body
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] & \lipsum[56] \\ \hline
+\end{longquadro}
+\endgroup
+
 
 \section{Algoritmos e Códigos}
 \label{secao:algoritmos_e_codigos}

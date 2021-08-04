@@ -726,6 +726,45 @@
 \renewcommand{\cftquadroname}{\quadroname\space}
 \renewcommand*{\cftquadroaftersnum}{\hfill\textendash\hfill}
 
+%%------------------Quadros-Longos-Configuracao--------------------------------------------------
+
+\newcommand{\VerbL}{0.52\textwidth}
+\newcommand{\LatL}{0.42\textwidth}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash\hspace{0pt}}X}
+
+% define env "longquadro"
+\newenvironment{longquadro}
+  {\patch@xltabular@i\patch@xltabular@ii
+   \xltabular}
+  {\endxltabular}
+
+% patching codes base on https://tex.stackexchange.com/a/548021
+\newcommand\patch@xltabular@i{%
+  \xpatchcmd\ltcaption@ORI@LT@array
+    {\refstepcounter{table}}
+    {\refstepcounter{quadro}}
+    {}{\fail}%
+}
+
+% since "\@ifpackageloaded" is preamble only, the patching codes have to
+% be split in two macros
+\@ifpackageloaded{caption}{
+  % handle compatibility with caption package
+  \newcommand\patch@xltabular@ii{%
+    \renewcommand\LTcaptype{quadro}%
+  }
+}{
+  \newcommand\patch@xltabular@ii{%
+    % derectly redefine "\LT@c@ption"
+    \def\LT@c@ption##1[##2]##3{%
+      \LT@makecaption##1\fnum@quadro{##3}%
+      \def\@tempa{##2}%
+      \ifx\@tempa\@empty\else
+         {\let\\\space
+         \addcontentsline{loq}{quadro}{\protect\numberline{\thequadro}{##2}}}%
+      \fi}%
+  }
+}
 
 %================================================================================
 % Criacao dos Ambientes Flutuantes para Algoritmos
